@@ -6,15 +6,17 @@ const github = require('@actions/github');
         try {
             core.notice("Calling this action");
             core.notice(github.context.issue.number);
+            core.notice(github.context.repo);
+            core.notice(github.context.owner);
 
             const myToken = core.getInput('githubToken');
             core.notice(myToken);
 
             const octokit = github.getOctokit(myToken);
 
-            let response = await octokit.rest.issues.createComment(
+            let response = await octokit.rest.pulls.createReviewComment(
                 {
-                issue_number: github.context.issue.number, 
+                pull_number: github.context.issue.number,
                 body: `This is a test for PR ${github.context.issue.number}`, 
                 owner: github.context.owner,
                 repo: github.context.repo
