@@ -8,6 +8,7 @@ const github = require('@actions/github');
             core.notice(github.context.issue.number);
 
             const myToken = core.getInput('githubToken');
+            core.notice(myToken);
 
             const octokit = github.getOctokit(myToken);
 
