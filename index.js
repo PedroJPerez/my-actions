@@ -23,6 +23,7 @@ const github = require('@actions/github');
             });
             
         } catch (error) {
+            console.log(error);
             core.setFailed(error.message);
         }
     }
