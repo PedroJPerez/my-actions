@@ -1,4 +1,4 @@
-name: "Google Drive Action"
+name: "Google Drive Action 2"
 description: "Will copy a google sheet and rename it"
 runs:
   using: node12
