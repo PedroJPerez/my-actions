@@ -2,4 +2,4 @@ name: "Google Drive Action"
 description: "Will copy a google sheet and rename it"
 runs:
   using: node12
-  main: index.js
+  main: '../lib/create-test-plan-action.js'
