@@ -5,19 +5,18 @@ const github = require('@actions/github');
     async () => {
         try {
             core.notice("Calling this action");
-            core.notice(github.context.issue.number);
-            core.notice(github.context.repo);
-            core.notice(github.context.owner);
+            console.log(github.context.issue.number);
+            console.log(github.context.repo);
+            console.log(github.context.owner);
 
             const myToken = core.getInput('githubToken');
-            core.notice(myToken);
 
             const octokit = github.getOctokit(myToken);
 
             let response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
-                owner: github.context.owner,
-                repo: github.context.repo,
-                issue_number: github.context.issue.number,
+                owner: "PedroJPerez",
+                repo: "aws-slack-notifier",
+                issue_number: "1",
                 body: "Test Plan: 12345-12345-12345"
               });
             
