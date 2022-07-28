@@ -14,13 +14,12 @@ const github = require('@actions/github');
 
             const octokit = github.getOctokit(myToken);
 
-            let response = await octokit.rest.pulls.createReviewComment(
-                {
-                pull_number: github.context.issue.number,
-                body: `This is a test for PR ${github.context.issue.number}`, 
+            let response = await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
                 owner: github.context.owner,
-                repo: github.context.repo
-            });
+                repo: github.context.repo,
+                issue_number: github.context.issue.number,
+                body: "Test Plan: 12345-12345-12345"
+              });
             
         } catch (error) {
             console.log(error);
